@@ -1,3 +1,15 @@
+// get chrome storage state
+function init(){
+    // append script if chrome storage state is active
+    chrome.storage.sync.get(['active'], function(result) {
+        let state = result['active'];
+        if (state == true || state == null){
+            // instantiate functions
+            appendScript();
+        }
+    });
+}
+
 // append browse-less.js to the current page
 function appendScript(){
     var s = document.createElement('script');
@@ -6,14 +18,4 @@ function appendScript(){
     s.onload = function() { s.remove(); };
 }
 
-// listen for data being sent from browse-less.js
-function addOptionListener(){
-    document.addEventListener('optionListener', function (e) {
-        var data = JSON.parse(e.detail);
-        console.log('received', data);
-    });
-}
-
-// instantiate functions
-appendScript();
-addOptionListener();
+init();

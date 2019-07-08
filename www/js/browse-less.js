@@ -22,9 +22,5 @@ function addScrollListener(){
     });
 }
 
-
-
 // instantiate functions
 addScrollListener();
-
-//alert('browse less installed');
