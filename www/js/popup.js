@@ -3,6 +3,10 @@ function addToggleListener(){
     document.getElementById("id-browse-less").addEventListener("click", function(e){
         var state = e.target.checked;
         chrome.storage.sync.set({ "active": state });
+        // refresh current tab
+        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+            chrome.tabs.update(tabs[0].id, {url: tabs[0].url});
+        });
     });
 }
 
