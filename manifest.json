@@ -4,7 +4,7 @@
   "version": "0.1",
   "manifest_version": 2,
   "browser_action": {
-    "default_popup": "www/index.html",
+    "default_popup": "www/popup.html",
     "default_title": "Browse Less"
   },
   "content_scripts": [{

@@ -11,7 +11,19 @@ function sendOptions(options){
 
 // add scroll listener
 function addScrollListener(){
-    document.addEventListener('scroll', function(e){
+    document.addEventListener('scroll', checkScroll, true);
+}
+
+function checkScroll(e, t){ // e = event, t = target
+    t = (t == undefined) ? e.target : t;
+    if (t.scrollTop == undefined){
+        t.childNodes.forEach(function(child){
+            // use recursion to find scrollable child
+            checkScroll(e, child);
+        });
+    }
+    else {
+        console.log(t.scrollTop)
         let next_scroll_position = window.scrollY;
         let scroll_diff = next_scroll_position - prev_scroll_position;
         let opacity = document.body.style.opacity;
@@ -19,7 +31,7 @@ function addScrollListener(){
         prev_scroll_position = next_scroll_position;
         opacity -= scroll_diff / 1000;
         document.body.style.opacity = opacity;
-    });
+    }
 }
 
 // instantiate functions
