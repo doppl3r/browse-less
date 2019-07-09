@@ -1,7 +1,3 @@
-let options = { active: true };
-let prev_scroll_position = window.scrollY;
-let ticking = false;
-
 // send data back to chrome extension listener
 function sendOptions(options){
     document.dispatchEvent(new CustomEvent('optionListener', {
@@ -14,6 +10,7 @@ function addScrollListener(){
     document.addEventListener('scroll', checkScroll, true);
 }
 
+// check all scrollable elements within the document
 function checkScroll(e, t){ // e = event, t = target
     t = (t == undefined) ? e.target : t;
     if (t.scrollTop == undefined){
@@ -23,14 +20,15 @@ function checkScroll(e, t){ // e = event, t = target
         });
     }
     else {
-        console.log(t.scrollTop)
-        let next_scroll_position = window.scrollY;
+        let attrName = "data-scroll-top";
+        let prev_scroll_position = t.getAttribute(attrName);
+        let next_scroll_position = t.scrollTop;
         let scroll_diff = next_scroll_position - prev_scroll_position;
-        let opacity = document.body.style.opacity;
+        let opacity = t.style.opacity;
         if (opacity == "" || opacity > 1) opacity = 1;
-        prev_scroll_position = next_scroll_position;
         opacity -= scroll_diff / 1000;
-        document.body.style.opacity = opacity;
+        t.style.opacity = opacity;
+        t.setAttribute(attrName, t.scrollTop);
     }
 }
 
