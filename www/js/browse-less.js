@@ -24,11 +24,12 @@ function checkScroll(e, t){ // e = event, t = target
         let prev_scroll_position = t.getAttribute(attrName);
         let next_scroll_position = t.scrollTop;
         let scroll_diff = next_scroll_position - prev_scroll_position;
+        let scroll_scale = 1; // 1 = clientHeight
         let opacity = t.style.opacity;
         if (opacity == "" || opacity > 1) opacity = 1;
-        opacity -= scroll_diff / 1000;
+        opacity -= scroll_diff / (t.clientHeight * scroll_scale);
         t.style.opacity = opacity;
-        t.setAttribute(attrName, t.scrollTop);
+        t.setAttribute(attrName, t.scrollTop); // update scroll position attribute
     }
 }
 
