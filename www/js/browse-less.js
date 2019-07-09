@@ -21,13 +21,13 @@ function checkScroll(e, t){ // e = event, t = target
     }
     else {
         let attrName = "data-scroll-top";
-        let prev_scroll_position = t.getAttribute(attrName);
-        let next_scroll_position = t.scrollTop;
-        let scroll_diff = next_scroll_position - prev_scroll_position;
-        let scroll_scale = 1; // 1 = clientHeight
+        let prevScrollPosition = t.getAttribute(attrName);
+        let nextScrollPosition = t.scrollTop;
+        let scrollDiff = nextScrollPosition - prevScrollPosition;
+        let scrollScale = 1; // 1 = clientHeight
         let opacity = t.style.opacity;
         if (opacity == "" || opacity > 1) opacity = 1;
-        opacity -= scroll_diff / (t.clientHeight * scroll_scale);
+        opacity -= scrollDiff / (t.clientHeight * scrollScale);
         t.style.opacity = opacity;
         t.setAttribute(attrName, t.scrollTop); // update scroll position attribute
     }
