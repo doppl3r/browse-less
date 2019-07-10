@@ -1,6 +1,6 @@
 {
   "name": "Browse Less",
-  "description": "Browse less, see more.",
+  "description": "Break your browsing habit one scroll at a time.",
   "version": "0.1",
   "manifest_version": 2,
   "browser_action": {
