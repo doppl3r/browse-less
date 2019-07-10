@@ -1,18 +1,17 @@
 // get chrome storage state
 function init(){
     // append script if chrome storage state is active
-    chrome.storage.sync.get(['active'], function(result) {
-        let state = result['active'];
-        if (state == true || state == null){
+    chrome.storage.sync.get(['blacklist'], function(result) {
+        let hostname = new URL(location.href).hostname;
+        let state = "enabled";
+        let list = result['blacklist'] || [];
+        list.forEach(function(item){
+            if (item == hostname) state = "disabled";
+        });
+        if (state == "enabled"){
             // instantiate functions
             appendScript();
         }
-    });
-
-    // listen to url event from new script
-    document.addEventListener('updateURL', function (e) {
-        var data = e.detail;
-        console.log(data['url']);
     });
 }
 

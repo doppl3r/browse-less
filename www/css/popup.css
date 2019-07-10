@@ -1,5 +1,7 @@
-body { margin: 0; width: 180px; min-height: 60px; }
+body { margin: 0; width: 180px; min-height: 60px; text-align: center; }
 body .options { background-color: #fff; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 14px; color: #555; padding: 16px; }
+body .options h1 { font-size: 16px; font-family: 'RobotoBlack'; margin: 0; }
+body .options p { margin: 0; }
 body .options a { color: inherit; text-align: center; display: block; text-decoration: none; }
 body .options .switch-input { display: none; }
 body .options .switch-label { box-sizing: border-box; position: relative; display: inline-block; cursor: pointer; font-weight: 500; text-align: left; padding: 6px 0 6px 44px; user-select: none; width: 100%; line-height: 16px; }
@@ -10,7 +12,9 @@ body .options .switch-label:after { left: 0; width: 20px; height: 20px; backgrou
 body .options .switch-input:checked + .switch-label:before { background-color: #2662ca; }
 body .options .switch-input:checked + .switch-label:after { background-color: #4885ed; transform: translate(80%, -50%); }
 body .options .material-icons { color: #dc265a; font-size: 16px; vertical-align: middle; animation: 0.5s ease-in-out throb infinite alternate; }
-body .options .md-btn { background: #4885ed; display: block; height: 36px; width: 100%; margin: 16px 0 12px 0; padding: 6px 16px; text-align: center; cursor: pointer; user-select: none; border: 0; color: #fff; outline: 0; }
+body .options .md-btn { background-color: #4885ed; display: block; height: 36px; width: 100%; margin: 16px 0 12px 0; padding: 6px 16px; text-align: center; cursor: pointer; user-select: none; border: 0; color: #fff; outline: 0; }
+body .options .md-btn[data-state="disabled"] { background-color: #ddd; color: inherit; }
+body .options .md-btn[data-state="disabled"]:hover { background-color: #ccc; }
 body .options .md-btn:hover { background-color: #2662ca; }
 
 @font-face { font-family: Roboto; src: url('../fonts/Roboto-Regular.woff2') format('woff2'), url('../fonts/Roboto-Regular.woff') format('woff'); }
