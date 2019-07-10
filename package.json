@@ -1,0 +1,13 @@
+{
+  "name": "browse-less",
+  "version": "1.0.0",
+  "description": "Browse Less",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-zip": "^5.0.0"
+  },
+  "engines": {
+    "node": ">= 10.16.0",
+    "npm": ">= 6.10.0"
+  }
+}
