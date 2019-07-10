@@ -33,5 +33,11 @@ function checkScroll(e, t){ // e = event, t = target
     }
 }
 
+function sendURL(){
+    var data = { url: location.href };
+    document.dispatchEvent(new CustomEvent('updateURL', { detail: data }));
+}
+
 // instantiate functions
 addScrollListener();
+sendURL();

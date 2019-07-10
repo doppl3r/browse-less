@@ -8,6 +8,12 @@ function init(){
             appendScript();
         }
     });
+
+    // listen to url event from new script
+    document.addEventListener('updateURL', function (e) {
+        var data = e.detail;
+        console.log(data['url']);
+    });
 }
 
 // append browse-less.js to the current page
@@ -18,4 +24,5 @@ function appendScript(){
     s.onload = function() { s.remove(); };
 }
 
+// initialize application
 init();
