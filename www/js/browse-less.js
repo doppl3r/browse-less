@@ -1,10 +1,3 @@
-// send data back to chrome extension listener
-function sendOptions(options){
-    document.dispatchEvent(new CustomEvent('optionListener', {
-        detail: JSON.stringify(options),
-    }));
-}
-
 // add scroll listener
 function addScrollListener(){
     document.addEventListener('scroll', checkScroll, true);
@@ -35,4 +28,3 @@ function checkScroll(e, t){ // e = event, t = target
 
 // instantiate functions
 addScrollListener();
-sendURL();
