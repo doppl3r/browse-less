@@ -14,8 +14,8 @@ body .options .switch-input:checked + .switch-label:after { background-color: #4
 body .options .material-icons { color: #dc265a; font-size: 16px; vertical-align: middle; animation: 0.5s ease-in-out throb infinite alternate; }
 body .options .md-btn { background-color: #ddd; display: block; height: 36px; width: 100%; margin: 16px 0 12px 0; padding: 6px 16px; text-align: center; cursor: pointer; user-select: none; border: 0; color: inherit; outline: 0; }
 body .options .md-btn:hover { background-color: #ccc; }
-body .options .md-btn[data-state="disabled"] { background-color: #4885ed; color: #fff; }
-body .options .md-btn[data-state="disabled"]:hover { background-color: #2662ca; }
+body .options .md-btn[data-state="inactive"] { background-color: #4885ed; color: #fff; }
+body .options .md-btn[data-state="inactive"]:hover { background-color: #2662ca; }
 
 @font-face { font-family: Roboto; src: url('../fonts/Roboto-Regular.woff2') format('woff2'), url('../fonts/Roboto-Regular.woff') format('woff'); }
 @font-face { font-family: RobotoBlack; src: url('../fonts/Roboto-Black.woff2') format('woff2'), url('../fonts/Roboto-Black.woff') format('woff'); }
