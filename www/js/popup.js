@@ -1,4 +1,5 @@
 // initialize elements
+let instructions = document.getElementById("instructions");
 let stateToggle = document.getElementById("stateToggle");
 let review = document.getElementById("review");
 
@@ -40,18 +41,20 @@ function updateState(){
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         chrome.storage.sync.get(['blacklist'], function(result) {
             let hostname = new URL(tabs[0].url).hostname;
-            let state = "enabled";
+            let state = "disabled";
             let list = result['blacklist'] || [];
             list.forEach(function(item){
-                if (item == hostname) state = "disabled";
+                if (item == hostname) state = "enabled";
             });
             // update html by state
             if (state == "enabled"){
                 stateToggle.innerHTML = "Disable";
+                instructions.innerHTML = 'Select <em>Disable</em> to scroll more on this website.';
                 stateToggle.setAttribute('data-state', 'enabled');
             }
             else if (state == "disabled") {
                 stateToggle.innerHTML = "Enable";
+                instructions.innerHTML = 'Select <em>Enable</em> to scroll less on this website.';
                 stateToggle.setAttribute('data-state', 'disabled');
             }
         });

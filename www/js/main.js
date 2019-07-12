@@ -3,10 +3,10 @@ function init(){
     // append script if chrome storage state is active
     chrome.storage.sync.get(['blacklist'], function(result) {
         let hostname = new URL(location.href).hostname;
-        let state = "enabled";
+        let state = "disabled";
         let list = result['blacklist'] || [];
         list.forEach(function(item){
-            if (item == hostname) state = "disabled";
+            if (item == hostname) state = "enabled";
         });
         if (state == "enabled"){
             // instantiate functions
