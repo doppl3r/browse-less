@@ -17,7 +17,7 @@ function checkScroll(e, t){ // e = event, t = target
         let prevScrollPosition = t.getAttribute(attrName);
         let nextScrollPosition = t.scrollTop;
         let scrollDiff = nextScrollPosition - prevScrollPosition;
-        let scrollScale = 1; // 1 = clientHeight
+        let scrollScale = 2;
         let opacity = t.style.opacity;
         if (opacity == "" || opacity > 1) opacity = 1;
         opacity -= scrollDiff / (t.clientHeight * scrollScale);
