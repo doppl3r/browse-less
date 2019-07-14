@@ -32,7 +32,7 @@ function addFormListeners(){
 
     // add event listener to review link
     review.addEventListener("click", function(){ 
-        chrome.tabs.create({ url:'https://chrome.google.com' });
+        chrome.tabs.create({ url:'https://chrome.google.com/webstore/detail/browse-less/cdbbbaknlcfhdjgnhemhlpemkbnfgoam/reviews?hl=en-US' });
     });
 }
 
