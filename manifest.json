@@ -1,7 +1,7 @@
 {
   "name": "Browse Less",
   "description": "Break your browsing habit one scroll at a time.",
-  "version": "0.3",
+  "version": "0.3.1",
   "manifest_version": 2,
   "browser_action": {
     "default_popup": "www/popup.html",
