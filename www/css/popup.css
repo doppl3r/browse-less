@@ -4,12 +4,13 @@ body .options h1 { font-size: 16px; font-family: 'RobotoBlack'; margin: 0; }
 body .options p { margin: 0px 0px 12px; }
 body .options a { color: inherit; text-align: center; display: block; text-decoration: none; }
 body .options #review .material-icons { color: #dc265a; font-size: 16px; vertical-align: middle; animation: 0.5s ease-in-out throb infinite alternate; }
-body .options .toggle { background-color: #f1f1f1; border-radius: 8px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 12px 6px; margin: 0px 0px 12px; user-select: none; }
+body .options .toggle { background-color: #f1f1f1; border: 2px solid transparent; border-radius: 8px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 12px 6px; margin: 0px 0px 12px; user-select: none; transition: all 0.1s ease-in-out; }
+body .options .toggle:hover { border-color: rgb(72, 133, 237, 1); }
 body .options .toggle span { vertical-align: middle; }
 body .options .toggle span .material-icons { padding-right: 8px; }
 body .options .toggle input { display: none; }
-body .options .toggle .switch { background-color: #dddddd; border-radius: 999px; width: 32px; height: 12px; transition: all 0.25s ease-in-out; }
-body .options .toggle .switch:before { background-color: #999; border-radius: 999px; content: ''; display: block; height: 16px; width: 16px; transform: translate(-2px, -2px); transition: all 0.25s ease-in-out; }
+body .options .toggle .switch { background-color: #dddddd; border-radius: 999px; width: 32px; height: 12px; transition: all 0.1s ease-in-out; }
+body .options .toggle .switch:before { background-color: #999; border-radius: 999px; content: ''; display: block; height: 16px; width: 16px; transform: translate(-2px, -2px); transition: all 0.1s ease-in-out; }
 body .options .toggle input:checked ~ .switch { background-color: rgb(72, 133, 237, 0.25); }
 body .options .toggle input:checked ~ .switch:before { background-color: #4885ed; transform: translate(18px, -2px); }
 
