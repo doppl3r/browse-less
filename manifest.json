@@ -1,9 +1,9 @@
 {
+  "manifest_version": 3,
   "name": "Browse Less",
   "description": "Break your browsing habit one scroll at a time.",
-  "version": "0.3.1",
-  "manifest_version": 2,
-  "browser_action": {
+  "version": "0.4",
+  "action": {
     "default_popup": "www/popup.html",
     "default_title": "Browse Less"
   },
@@ -13,7 +13,10 @@
     "js": ["www/js/main.js"],
     "css": ["www/css/browse-less.css"]
   }],
-  "web_accessible_resources": ["www/js/browse-less.js"],
+  "web_accessible_resources": [{ 
+    "resources": ["www/js/browse-less.js"],
+    "matches": ["<all_urls>"]
+  }],
   "icons": { 
     "16": "www/img/icons/icon16.png",
     "48": "www/img/icons/icon48.png",

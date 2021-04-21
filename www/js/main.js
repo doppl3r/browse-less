@@ -1,27 +1,29 @@
-// get chrome storage state
+// Get chrome storage state
 function init(){
-    // append script if chrome storage state is active
-    chrome.storage.sync.get(['blacklist'], function(result) {
-        let hostname = new URL(location.href).hostname;
-        let state = "inactive";
-        let list = result['blacklist'] || [];
-        list.forEach(function(item){
-            if (item == hostname) state = "active";
-        });
-        if (state == "active"){
-            // instantiate functions
-            appendScript();
-        }
+    // Append script if chrome storage state is active
+    chrome.storage.sync.get(null, function(items) {
+        var href = window.location.href;
+        var hostname = new URL(href).hostname;
+        var state = "inactive";
+        var listHref = items['href'] || [];
+        var listHostname = items['hostname'] || [];
+
+        // Loop through each href list item for matching string
+        listHref.forEach(function(item){ if (item == href) state = "active"; });
+        listHostname.forEach(function(item){ if (item == hostname) state = "active"; });
+
+        // Add script if any match exists
+        if (state == "active"){ appendScript(); }
     });
 }
 
-// append browse-less.js to the current page
+// Append browse-less.js to the current page
 function appendScript(){
     var s = document.createElement('script');
-    s.src = chrome.extension.getURL('/www/js/browse-less.js');
+    s.src = chrome.runtime.getURL('/www/js/browse-less.js');
     (document.head||document.documentElement).appendChild(s);
     s.onload = function() { s.remove(); };
 }
 
-// initialize application
+// Initialize application
 init();

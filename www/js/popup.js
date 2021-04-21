@@ -1,67 +1,70 @@
-// initialize elements
-let instructions = document.getElementById("instructions");
-let stateToggle = document.getElementById("stateToggle");
-let review = document.getElementById("review");
+// Initialize elements
+var togglePage = document.getElementById("togglePage");
+var toggleWebsite = document.getElementById("toggleWebsite");
+var review = document.getElementById("review");
 
 function addFormListeners(){
-    // add event listener to black list button
-    stateToggle.addEventListener("click", function(){ 
-        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-            chrome.storage.sync.get(['blacklist'], function(result) {
-                let hostname = new URL(tabs[0].url).hostname;
-                let matchIndex = -1;
-                let list = result['blacklist'] || [];
-                list.forEach(function(item, index) {
-                    if (item == hostname) matchIndex = index;
-                });
-                // update list if the hostname exists in chrome storage
-                if (matchIndex >= 0) {
-                    list.splice(matchIndex, 1);
-                }
-                else {
-                    list.push(hostname);
-                }
-                // upload new blacklist
-                chrome.storage.sync.set({'blacklist': list}, function(){
-                    chrome.tabs.update(tabs[0].id, {url: tabs[0].url});
-                    updateState();
-                });
-            });
-        });
-    });
+    // Add event listener to black list button
+    togglePage.addEventListener("click", function(){ checkListByType('href'); });
+    toggleWebsite.addEventListener("click", function(){ checkListByType('hostname'); });
 
-    // add event listener to review link
+    // Add event listener to review link
     review.addEventListener("click", function(){ 
         chrome.tabs.create({ url:'https://chrome.google.com/webstore/detail/browse-less/cdbbbaknlcfhdjgnhemhlpemkbnfgoam/reviews?hl=en-US' });
     });
 }
 
-// set active state of toggle button from chrome storage
-function updateState(){
+function checkListByType(listType) {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.storage.sync.get(['blacklist'], function(result) {
-            let hostname = new URL(tabs[0].url).hostname;
-            let state = "inactive";
-            let list = result['blacklist'] || [];
-            list.forEach(function(item){
-                if (item == hostname) state = "active";
+        chrome.storage.sync.get([listType], function(items) {
+            var href = tabs[0].url;
+            var hostname = new URL(href).hostname;
+            var matchIndex = -1;
+            var list = items[listType] || [];
+            var target = listType == 'href' ? href : hostname;
+
+            // Loop through each list item for matching index
+            list.forEach(function(item, index) {
+                if (item == target) matchIndex = index;
             });
-            // update html by state
-            if (state == "active"){
-                stateToggle.innerHTML = "Disable";
-                instructions.innerHTML = 'Select <em>Disable</em> to scroll more on this website.';
-                stateToggle.setAttribute('data-state', 'active');
-            }
-            else if (state == "inactive") {
-                stateToggle.innerHTML = "Enable";
-                instructions.innerHTML = 'Select <em>Enable</em> to scroll less on this website.';
-                stateToggle.setAttribute('data-state', 'inactive');
-            }
+
+            // Update list if the target exists in chrome storage
+            if (matchIndex >= 0) { list.splice(matchIndex, 1); }
+            else { list.push(target); }
+
+            // Upload new blacklist
+            chrome.storage.sync.set({[listType]: list}, function(){
+                chrome.tabs.update(tabs[0].id, {url: href});
+                updateState(listType);
+            });
+        });
+    });
+}
+
+// Set active state of toggle button from chrome storage
+function updateState(listType){
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        chrome.storage.sync.get([listType], function(items) {
+            var href = tabs[0].url;
+            var hostname = new URL(href).hostname;
+            var state = "inactive";
+            var list = items[listType] || [];
+            var target = listType == 'href' ? href : hostname;
+            var elem = listType == 'href' ? togglePage : toggleWebsite;
+
+            // Loop through each list item for matching index
+            list.forEach(function(item){
+                if (item == target) state = "active";
+            });
+
+            // Update html by state
+            elem.checked = (state == 'active');
         });
     });
     
 }
 
-// instantiate functions
+// Instantiate functions
 addFormListeners();
-updateState();
+updateState('href');
+updateState('hostname');

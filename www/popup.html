@@ -5,7 +5,6 @@
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport' />
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/popup.css">
         <link rel="icon" type="image/png" href="img/icons/icon16.png">
         <title>Browse Less</title>
@@ -13,8 +12,21 @@
     <body>
         <form id="options" class="options">
             <h1>Browse Less</h1>
-            <p id="instructions"></p>
-            <button id="stateToggle" type="button" class="md-btn"></button>
+            <p id="instructions">Be more productive by fading this page or the entire website.</p>
+            <label class="toggle">
+                <span>
+                    <span class="material-icons material-icons-outlined">link</span>Page
+                </span>
+                <input id="togglePage" type="checkbox">
+                <span class="switch"></span>
+            </label>
+            <label class="toggle">
+                <span>
+                    <span class="material-icons material-icons-outlined">language</span>Website
+                </span>
+                <input id="toggleWebsite" type="checkbox">
+                <span class="switch"></span>
+            </label>
             <a href="#" id="review"><i class="material-icons">favorite</i> write a review</a>
         </form>
         <script type="text/javascript" src="js/popup.js"></script>
