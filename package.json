@@ -4,7 +4,7 @@
   "description": "Browse Less",
   "devDependencies": {
     "gulp": "^4.0.2",
-    "gulp-zip": "^5.0.0"
+    "gulp-zip": "^5.1.0"
   },
   "engines": {
     "node": ">= 10.16.0",
