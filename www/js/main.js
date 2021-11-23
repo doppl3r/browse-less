@@ -6,14 +6,14 @@
 
     function init() {
         // Update lists from Chrome Storage
-        updateLists();
+        updateListsFromChrome();
 
         // Add listeners
         addScrollListener();
         addMessageListener();
     }
 
-    function updateLists() {
+    function updateListsFromChrome() {
         // Update lists
         chrome.storage.sync.get(null, function(items) {
             listHref = items['href'] || [];
@@ -73,8 +73,7 @@
         chrome.runtime.onMessage.addListener(
             function(request, sender, sendResponse) {
                 console.log(request);
-                if (request.href != null) listHref = request.href;
-                if (request.hostname != null) listHostname = request.hostname;
+                updateListsFromChrome(); // Update list when popup is updated
                 sendResponse({ success: request });
             }
         );

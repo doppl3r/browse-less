@@ -43,7 +43,7 @@
                 if (matchIndex >= 0) { list.splice(matchIndex, 1); }
                 else { list.push(target); }
 
-                // Upload new blacklist
+                // Update UI after sending list to Chrome storage
                 chrome.storage.sync.set({[listType]: list}, function(){
                     updateState(listType);
                     sendMessageToMain({[listType]: list});
