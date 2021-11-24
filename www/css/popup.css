@@ -2,7 +2,7 @@ body { margin: 0; width: 180px; min-height: 60px; text-align: center; }
 body .options { background-color: #fff; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 14px; color: #555; padding: 16px; }
 body .options h1 { font-size: 16px; font-family: 'RobotoBlack'; margin: 0; }
 body .options p { margin: 0px 0px 12px; }
-body .options a { color: inherit; text-align: center; display: block; text-decoration: none; }
+body .options a { color: inherit; text-align: center; display: block; text-decoration: none; outline: none !important; }
 body .options #review .material-icons { color: #dc265a; font-size: 16px; vertical-align: middle; animation: 0.5s ease-in-out throb infinite alternate; }
 body .options .toggle { background-color: #f1f1f1; border: 2px solid transparent; border-radius: 8px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 12px 6px; margin: 0px 0px 12px; user-select: none; transition: all 0.1s ease-in-out; }
 body .options .toggle:hover { border-color: rgb(72, 133, 237, 1); }
@@ -11,11 +11,15 @@ body .options .toggle span .material-icons { padding-right: 8px; }
 body .options .toggle input { display: none; }
 body .options .toggle .switch { background-color: #dddddd; border-radius: 999px; width: 32px; height: 12px; transition: all 0.1s ease-in-out; }
 body .options .toggle .switch:before { background-color: #999; border-radius: 999px; content: ''; display: block; height: 16px; width: 16px; transform: translate(-2px, -2px); transition: all 0.1s ease-in-out; }
-body .options .toggle input:checked ~ .switch { background-color: rgb(72, 133, 237, 0.25); }
+body .options .toggle input:checked ~ .switch { background-color: rgba(72, 133, 237, 0.25); }
 body .options .toggle input:checked ~ .switch:before { background-color: #4885ed; transform: translate(18px, -2px); }
+body .options .slider { background-color: #f1f1f1; border: 2px solid transparent; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; padding: 12px 6px; margin: 0px 0px 12px; user-select: none; transition: all 0.1s ease-in-out; }
+body .options .slider input { border-radius: 999px; min-width: 0px; margin: 0px 0px 0px 8px; -webkit-appearance: none; outline: none !important; transition: all 0.1s ease-in-out; }
+body .options .slider input::-webkit-slider-runnable-track { border-radius: 999px; height: 12px; }
+body .options .slider input::-webkit-slider-thumb { background-color: #4885ed; border-radius: 999px; width: 16px; height: 16px; -webkit-appearance: none; transform: translate(0px, -2px); transition: all 0.1s ease-in-out; }
 
 /* Google fonts */
-.material-icons { font-family: 'Material Icons'; font-weight: normal; font-style: normal; font-size: 24px; line-height: 1; letter-spacing: normal; text-transform: none; display: inline-block; white-space: nowrap; word-wrap: normal; direction: ltr; -webkit-font-feature-settings: 'liga'; -webkit-font-smoothing: antialiased; }
+.material-icons { font-family: 'Material Icons'; font-weight: normal; font-style: normal; font-size: 24px; line-height: 0px; vertical-align: middle; letter-spacing: normal; text-transform: none; display: inline-block; white-space: nowrap; word-wrap: normal; direction: ltr; -webkit-font-feature-settings: 'liga'; -webkit-font-smoothing: antialiased; }
 
 /* Local fonts */
 @font-face { font-family: 'Roboto'; src: url('../fonts/Roboto-Regular.woff2') format('woff2'), url('../fonts/Roboto-Regular.woff') format('woff'); }

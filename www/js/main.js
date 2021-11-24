@@ -5,19 +5,20 @@
     var scrollScale = 2; // TODO: Update from popup message
 
     function init() {
-        // Update lists from Chrome Storage
-        updateListsFromChrome();
+        // Update data from Chrome Storage
+        updateDataFromChrome();
 
         // Add listeners
         addScrollListener();
         addMessageListener();
     }
 
-    function updateListsFromChrome() {
-        // Update lists
+    function updateDataFromChrome() {
         chrome.storage.sync.get(null, function(items) {
             listHref = items['href'] || [];
             listHostname = items['hostname'] || [];
+            scrollScale = items['scale'] || scrollScale;
+            console.log(items['scale']);
         });
     }
 
@@ -55,6 +56,7 @@
             let scrollDiff = nextScrollPosition - prevScrollPosition;
             let opacity = t.style.opacity;
             if (opacity == "" || opacity > 1) opacity = 1;
+            console.log(scrollScale);
             opacity -= scrollDiff / (t.clientHeight * scrollScale);
             if (isBlacklisted() == false) opacity = 1; // Reset opacity if not blacklisted
             t.style.opacity = opacity;
@@ -73,7 +75,7 @@
         chrome.runtime.onMessage.addListener(
             function(request, sender, sendResponse) {
                 console.log(request);
-                updateListsFromChrome(); // Update list when popup is updated
+                updateDataFromChrome(); // Update data when popup is updated
                 sendResponse({ success: request });
             }
         );
