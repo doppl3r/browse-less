@@ -13,10 +13,15 @@ body .options .toggle .switch { background-color: #dddddd; border-radius: 999px;
 body .options .toggle .switch:before { background-color: #999; border-radius: 999px; content: ''; display: block; height: 16px; width: 16px; transform: translate(-2px, -2px); transition: all 0.1s ease-in-out; }
 body .options .toggle input:checked ~ .switch { background-color: rgba(72, 133, 237, 0.25); }
 body .options .toggle input:checked ~ .switch:before { background-color: #4885ed; transform: translate(18px, -2px); }
-body .options .slider { background-color: #f1f1f1; border: 2px solid transparent; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; padding: 12px 6px; margin: 0px 0px 12px; user-select: none; transition: all 0.1s ease-in-out; }
+body .options .slider { border: 2px solid transparent; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; padding: 6px; margin: 0px 0px 12px; user-select: none; transition: all 0.1s ease-in-out; }
 body .options .slider input { border-radius: 999px; min-width: 0px; margin: 0px 0px 0px 8px; -webkit-appearance: none; outline: none !important; transition: all 0.1s ease-in-out; }
 body .options .slider input::-webkit-slider-runnable-track { border-radius: 999px; height: 12px; }
 body .options .slider input::-webkit-slider-thumb { background-color: #4885ed; border-radius: 999px; width: 16px; height: 16px; -webkit-appearance: none; transform: translate(0px, -2px); transition: all 0.1s ease-in-out; }
+
+/* Warning dialog */
+body .options .options-group { position: relative; }
+body .options .options-group:before { background-color: #f6f6f6; border-radius: 8px; content: 'Something went wrong. Please try again on a safe website.'; font-size: 12px; display: none; position: absolute; top: 0; right: 0; bottom: 0; left: 0; padding: 12px; z-index: 1; }
+body .options .options-group.disabled:before { display: flex; align-items: center }
 
 /* Google fonts */
 .material-icons { font-family: 'Material Icons'; font-weight: normal; font-style: normal; font-size: 24px; line-height: 0px; vertical-align: middle; letter-spacing: normal; text-transform: none; display: inline-block; white-space: nowrap; word-wrap: normal; direction: ltr; -webkit-font-feature-settings: 'liga'; -webkit-font-smoothing: antialiased; }

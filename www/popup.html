@@ -14,26 +14,28 @@
             <img src="img/icons/icon48.png" class="logo">
             <h1>Browse Less</h1>
             <p id="instructions">Be more productive by fading this page or the entire website.</p>
-            <label class="toggle">
-                <span>
-                    <span class="material-icons material-icons-outlined">link</span>Page
-                </span>
-                <input id="togglePage" type="checkbox">
-                <span class="switch"></span>
-            </label>
-            <label class="toggle">
-                <span>
-                    <span class="material-icons material-icons-outlined">language</span>Website
-                </span>
-                <input id="toggleWebsite" type="checkbox">
-                <span class="switch"></span>
-            </label>
-            <div class="slider">
-                <span>
-                    <span class="material-icons material-icons-outlined">visibility</span>
-                </span>
-                <input type="range" id="scale" name="vol" min="1" max="20">
-                <span class="switch"></span>
+            <div class="options-group">
+                <label class="option toggle">
+                    <span>
+                        <span class="material-icons material-icons-outlined">link</span>Page
+                    </span>
+                    <input id="togglePage" type="checkbox">
+                    <span class="switch"></span>
+                </label>
+                <label class="option toggle">
+                    <span>
+                        <span class="material-icons material-icons-outlined">language</span>Website
+                    </span>
+                    <input id="toggleWebsite" type="checkbox">
+                    <span class="switch"></span>
+                </label>
+                <div class="option slider">
+                    <span>
+                        <span class="material-icons material-icons-outlined">schedule</span>
+                    </span>
+                    <input type="range" id="scale" name="vol" min="1" max="20" aria-label="Scroll amount">
+                    <span class="switch"></span>
+                </div>
             </div>
             <a href="#" id="review"><i class="material-icons">favorite</i> write a review</a>
         </form>

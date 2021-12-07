@@ -18,7 +18,6 @@
             listHref = items['href'] || [];
             listHostname = items['hostname'] || [];
             scrollScale = items['scale'] || scrollScale;
-            console.log(items['scale']);
         });
     }
 
@@ -56,7 +55,6 @@
             let scrollDiff = nextScrollPosition - prevScrollPosition;
             let opacity = t.style.opacity;
             if (opacity == "" || opacity > 1) opacity = 1;
-            console.log(scrollScale);
             opacity -= scrollDiff / (t.clientHeight * scrollScale);
             if (isBlacklisted() == false) opacity = 1; // Reset opacity if not blacklisted
             t.style.opacity = opacity;
@@ -67,14 +65,14 @@
     function sendMessageToPopup(message) {
         // Send message { key: value } from main.js to popup.js
         chrome.runtime.sendMessage(message, function(response) {
-            console.log(response);
+            console.log('Browse Less', response);
         });
     }
 
     function addMessageListener() {
         chrome.runtime.onMessage.addListener(
             function(request, sender, sendResponse) {
-                console.log(request);
+                console.log('Browse Less', request);
                 updateDataFromChrome(); // Update data when popup is updated
                 sendResponse({ success: request });
             }
