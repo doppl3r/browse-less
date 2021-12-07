@@ -2,7 +2,7 @@
     // Define local variables
     var listHref = [];
     var listHostname = [];
-    var scrollScale = 2; // TODO: Update from popup message
+    var scrollScale = 5; // Default
 
     function init() {
         // Update data from Chrome Storage
