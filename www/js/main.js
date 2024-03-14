@@ -24,14 +24,15 @@
     function isBlacklisted() {
         var href = window.location.href
         var hostname = new URL(href).hostname;
-        var blacklisted = false;
+        var blacklisted_page = 0;
+        var blacklisted_host = 0;
 
         // Loop through each href list item for matching string
-        listHref.forEach(function(item){ if (item == href) blacklisted = true; });
-        listHostname.forEach(function(item){ if (item == hostname) blacklisted = true; });
+        listHref.forEach(function(item){ if (item == href) blacklisted_page = 1; });
+        listHostname.forEach(function(item){ if (item == hostname) blacklisted_host = 1; });
         
-        // Add script if any match exists
-        return blacklisted;
+        // Add script if one match exists. Return false if 2 matches exist (aka "whitelist page")
+        return blacklisted_page + blacklisted_host == 1;
     }
 
     function addScrollListener() {

@@ -25,7 +25,7 @@
 
         // Add event listener to review link
         review.addEventListener("click", function(){ 
-            chrome.tabs.create({ url:'https://chrome.google.com/webstore/detail/browse-less/cdbbbaknlcfhdjgnhemhlpemkbnfgoam/reviews?hl=en-US' });
+            chrome.tabs.create({ url:'https://chromewebstore.google.com/detail/browse-less/cdbbbaknlcfhdjgnhemhlpemkbnfgoam/reviews' });
         });
     }
 
